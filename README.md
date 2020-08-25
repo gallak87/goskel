@@ -2,10 +2,10 @@
 skeleton go app with oauth, pg and protobuf
 
 ## design
-front-end: typescript + react
-back-end: go + proto + pg
-auth: hydra
-deploy: docker-compose (stretch: k8s)
+- front-end: typescript + react
+- back-end: go + proto + pg
+- auth: hydra
+- deploy: docker-compose (stretch: k8s)
 
 
 ### plan
