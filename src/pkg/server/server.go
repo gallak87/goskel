@@ -15,10 +15,13 @@ var (
 	ErrNotFound = errors.New("not found")
 )
 
+// TODO: replace with db and go-pg
+
 type User struct {
 	ID   int64
 	Name string
 }
+
 
 type userServer struct{}
 
