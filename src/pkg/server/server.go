@@ -23,7 +23,10 @@ type User struct {
 type userServer struct{}
 
 func (s *userServer) GetUser(ctx context.Context, request *userpb.GetUserRequest) (*userpb.GetUserResponse, error) {
-	panic("implement me")
+	return &userpb.GetUserResponse{
+		Id: "1",
+		Name: "Username",
+	}, nil
 }
 
 func (s *userServer) RegisterUser(ctx context.Context, request *userpb.RegisterUserRequest) (*userpb.RegisterUserResponse, error) {
