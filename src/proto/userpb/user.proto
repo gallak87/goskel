@@ -1,0 +1,46 @@
+// this protoc command _basically_ works, just outputs to the wrong directory
+// good ol' windows and double backslashes >_<
+// protoc --proto_path .\userpb .\userpb\user.proto "-IC:\\Users\\georg\\.protoc" "-IC:\\Users\\georg\\go\\pkg\\mod\\github.com\\grpc-ecosystem\\grpc-gateway@v1.9.0\\third_party\\googleapis\\google\\api" --go_out=plugins=grpc:../../
+// TODO: grpc gateway
+
+
+syntax = "proto3";
+
+//TODO: https://github.com/grpc-ecosystem/grpc-gateway/blob/master/examples/internal/proto/examplepb/a_bit_of_everything.proto
+//import "google/api/annotations.proto";
+
+package server;
+option go_package = "userpb";
+
+service UserService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+  // todo: rpc Login(LoginUserRequest) returns (LoginUserResponse) {}
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message RegisterUserRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message RegisterUserResponse {
+  bool success = 1;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message DeleteUserResponse {
+  bool success = 1;
+}
