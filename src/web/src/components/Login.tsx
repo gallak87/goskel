@@ -8,12 +8,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 
-import * as grpcWeb from 'grpc-web';
-import { UserServiceClient } from '../api/UserServiceClientPb';
-import { GetUserRequest, GetUserResponse } from '../api/user_pb';
+import { UserServiceClient, ServiceError } from '../api/user_pb_service';
+import { GetUserRequest, GetUserResponse } from '../api/user_pb'
 
-
-const client = new UserServiceClient("localhost:9090", null, null);
+// connects to grpcwebproxy which is listening on port 8080
+// TODO: configurize eventually..
+const client = new UserServiceClient("http://localhost:8080");
 
 // Reference: https://github.com/creativesuraj/react-material-ui-login/blob/master/src/components/Login.tsx
 
@@ -93,19 +93,23 @@ const Login = () => {
      } else {
        dispatch({ type: 'setIsButtonDisabled', payload: true });
      }
-   }, [state.username, state.password]);
-   
-   const handleLogin = () => {
+  }, [state.username, state.password]);
+  const handleLogin = () => {
+    // TODO: break out client wrapper
     const req = new GetUserRequest();
     req.setId("1");
-    
-    // TODO: Why this no work?
-    var response = client.getUser(req, {},
-      (err: grpcWeb.Error, response: GetUserResponse) => {
-        
+    let resp:GetUserResponse;
+    client.getUser(req,
+      (error: ServiceError | null, response: GetUserResponse | null) => {
+        console.log(error);
+        const id = response?.getId();
+        const name = response?.getName();
+        console.log(id);
+        console.log(name);
       }
     );
     
+    // TODO: handle logins + session management
     if (state.username === 'abc@email.com' && state.password === 'password') {
       dispatch({ type: 'loginSuccess', payload: 'Login Successfully' });
     } else {

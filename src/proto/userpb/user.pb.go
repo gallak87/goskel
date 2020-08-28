@@ -1,10 +1,9 @@
 // this protoc command _basically_ works, just outputs to the wrong directory
 // good ol' windows and double backslashes >_<
-// protoc --proto_path .\userpb .\userpb\user.proto "-IC:\\Users\\georg\\.protoc" "-IC:\\Users\\georg\\go\\pkg\\mod\\github.com\\grpc-ecosystem\\grpc-gateway@v1.9.0\\third_party\\googleapis\\google\\api" --go_out=plugins=grpc:userpb --js_out=import_style=commonjs,binary:../web/src/api --grpc-web_out=import_style=typescript,mode=grpcwebtext:../web/src/api
-// --> this now generates TS scripts very hackily (not even sure they work yet)
-// --> but they generate!
+// protoc --proto_path .\userpb .\userpb\user.proto "-IC:/Users/georg/.protoc" "-IC:/Users/georg/go/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.9.0/third_party/googleapis/google/api" --go_out=plugins=grpc:userpb "--plugin=protoc-gen-ts=$pwd/../web/node_modules/.bin/protoc-gen-ts.cmd" --js_out="import_style=commonjs,binary:../web/src/api" --ts_out=service=grpc-web:../web/src/api
+// grpcwebproxy --backend_addr=localhost:9090 --allow_all_origins --run_tls_server=false
 // --> https://medium.com/blokur/how-to-implement-a-grpc-client-and-server-in-typescript-fa3ac807855e
-// --> also consider a different ts generator: https://github.com/improbable-eng/ts-protoc-gen
+
 ////////// TOREALYDO: makefile
 
 // TODO: grpc gateway

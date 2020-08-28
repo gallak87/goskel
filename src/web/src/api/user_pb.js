@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // source: user.proto
 /**
  * @fileoverview
@@ -985,3 +987,4 @@ proto.server.DeleteUserResponse.prototype.setSuccess = function(value) {
 
 
 goog.object.extend(exports, proto.server);
+
