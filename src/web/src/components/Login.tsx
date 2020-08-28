@@ -8,6 +8,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 
+import * as grpcWeb from 'grpc-web';
+import { UserServiceClient } from '../api/UserServiceClientPb';
+import { GetUserRequest, GetUserResponse } from '../api/user_pb';
+
+
+const client = new UserServiceClient("localhost:9090", null, null);
+
 // Reference: https://github.com/creativesuraj/react-material-ui-login/blob/master/src/components/Login.tsx
 
 // TODO: Learn more about colors and material-ui: https://material-ui.com/customization/color/
@@ -87,7 +94,18 @@ const Login = () => {
        dispatch({ type: 'setIsButtonDisabled', payload: true });
      }
    }, [state.username, state.password]);
+   
    const handleLogin = () => {
+    const req = new GetUserRequest();
+    req.setId("1");
+    
+    // TODO: Why this no work?
+    var response = client.getUser(req, {},
+      (err: grpcWeb.Error, response: GetUserResponse) => {
+        
+      }
+    );
+    
     if (state.username === 'abc@email.com' && state.password === 'password') {
       dispatch({ type: 'loginSuccess', payload: 'Login Successfully' });
     } else {
