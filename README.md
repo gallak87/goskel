@@ -1,6 +1,20 @@
 # goskel
 skeleton full-stack app with typescript/react + go, oauth, pg and protobuf
 
+## structure
+```
+src/
+    cmd/    --> go entry points (client, server)
+    common/ --> tooling
+    pkg/    --> go server-side implementation
+    proto/  --> proto files + generated clients
+    web/    --> react webapp
+        public/     --> web assets
+        src/        --> webapp implementation
+            api/        --> proto-generated typescript client
+            components/ --> web components (ex: login component)
+```
+
 ## progress
 #### WORKING
 - protoc generating go client
