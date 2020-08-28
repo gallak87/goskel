@@ -20,6 +20,8 @@ src/
 - protoc generating go client
 - go cmds using grpc client connects to grpc server
 - react typescript webapp with dummy login form
+- typescript client generation with esslint-disable fixup with script src/proto/gen-proto.ps1
+- helper script src/start-grpc.ps1 to start up both go grpc server + grpcwebproxy
 
 #### IN PROGRESS
 - add dependencies: hydra, pg
@@ -28,9 +30,6 @@ src/
 - add makefile and automate stuffz
 - revisit protoc generation, make-ify, restructure?
 - hook up front-end to back-end via typescript generated proto client
-
-#### NOT WORKING
-- protoc generated typescript client doesn't seem to have right dependencies
 
 ## design
 - front-end: typescript + react
