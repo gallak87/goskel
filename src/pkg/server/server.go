@@ -15,14 +15,14 @@ var (
 	ErrNotFound = errors.New("not found")
 )
 
-// TODO: replace with db and go-pg
+// TODO: replace with db and use go-pg
 
 type User struct {
 	ID   int64
 	Name string
 }
-
-
+type UserTable map[string]User
+var UserRepo UserTable = make(UserTable)
 type userServer struct{}
 
 func (s *userServer) GetUser(ctx context.Context, request *userpb.GetUserRequest) (*userpb.GetUserResponse, error) {
@@ -33,11 +33,15 @@ func (s *userServer) GetUser(ctx context.Context, request *userpb.GetUserRequest
 }
 
 func (s *userServer) RegisterUser(ctx context.Context, request *userpb.RegisterUserRequest) (*userpb.RegisterUserResponse, error) {
-	panic("implement me")
+	return &userpb.RegisterUserResponse{
+		Success: false,
+	}, nil
 }
 
 func (s *userServer) DeleteUser(ctx context.Context, request *userpb.DeleteUserRequest) (*userpb.DeleteUserResponse, error) {
-	panic("implement me")
+	return &userpb.DeleteUserResponse{
+		Success: false,
+	}, nil
 }
 
 func newUserServer() userpb.UserServiceServer {
