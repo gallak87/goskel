@@ -16,19 +16,19 @@ web/    --> react webapp
 
 ## progress
 #### WORKING
-- protoc generating go client
+- protoc generating typescript and go clients
 - go cmds using grpc client connects to grpc server
 - react typescript webapp with dummy login form
-- typescript client generation with esslint-disable fixup with script src/proto/gen-proto.ps1
-- helper script src/start-grpc.ps1 to start up both go grpc server + grpcwebproxy
+    - talks to back-end via typescript proto client
+- proto/gen-proto.ps1 to generate protos
+- start-grpc.ps1 to start up both go grpc server + grpcwebproxy locally
+- dockerfile + docker-compose with grpcwebproxy + goskel
 
 #### IN PROGRESS
 - add dependencies: hydra, pg
 - implement server-side logic for user-service
-- dockerize all deps then add docker-compose
 - add makefile and automate stuffz
 - revisit protoc generation, make-ify, restructure?
-- hook up front-end to back-end via typescript generated proto client
 
 ## design
 - front-end: typescript + react

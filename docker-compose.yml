@@ -1,0 +1,26 @@
+version: '3'
+
+networks:
+  frontend:
+  backend:
+
+services:
+  goskel:
+    networks:
+      - backend
+    image: goskel:latest
+
+  grpcwebproxy:
+    networks:
+      - frontend
+      - backend
+    image: grpc-web:grpcwebproxy
+    build:
+      context: ./
+      dockerfile: ./dockerdeps/grpcwebproxy/Dockerfile
+    ports:
+      - "8080:8080"
+    links:
+      - goskel
+    #image: jfyne/docker-grpcwebproxy:latest
+    #command: 'grpcwebproxy --backend_addr=localhost:9090 --allow_all_origins --run_tls_server=false'
