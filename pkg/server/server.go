@@ -6,7 +6,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
-	"goskel/src/proto/userpb"
+	"github.com/gallak87/goskel/proto/userpb"
 	"net"
 	"net/http"
 )

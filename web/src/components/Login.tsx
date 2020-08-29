@@ -98,23 +98,23 @@ const Login = () => {
     // TODO: break out client wrapper
     const req = new GetUserRequest();
     req.setId("1");
-    let resp:GetUserResponse;
+    let name:string|undefined = 'unknown name';
     client.getUser(req,
       (error: ServiceError | null, response: GetUserResponse | null) => {
         console.log(error);
-        const id = response?.getId();
-        const name = response?.getName();
-        console.log(id);
+        console.log(response);
+        name = response?.getName();
         console.log(name);
+        dispatch({ type: 'loginSuccess', payload: `returned ${name} from user-service` });
       }
     );
-    
-    // TODO: handle logins + session management
-    if (state.username === 'abc@email.com' && state.password === 'password') {
-      dispatch({ type: 'loginSuccess', payload: 'Login Successfully' });
-    } else {
-      dispatch({ type: 'loginFailed', payload: 'Incorrect username or password' });
-    }
+
+    // // TODO: handle logins + session management
+    // if (state.username === 'abc@email.com' && state.password === 'password') {
+    //   dispatch({ type: 'loginSuccess', payload: `returned ${name}` });
+    // } else {
+    //   dispatch({ type: 'loginFailed', payload: 'Incorrect username or password' });
+    // }
   };
 
   const handleKeyPress = (event: React.KeyboardEvent) => {

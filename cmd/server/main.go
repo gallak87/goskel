@@ -4,7 +4,7 @@ import (
 	"context"
 	"flag"
 	"github.com/golang/glog"
-	"goskel/src/pkg/server"
+	"github.com/gallak87/goskel/pkg/server"
 )
 
 var (

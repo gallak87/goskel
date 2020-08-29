@@ -1,4 +1,4 @@
-module goskel
+module github.com/gallak87/goskel
 
 go 1.15
 

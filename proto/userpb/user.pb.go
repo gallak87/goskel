@@ -1,10 +1,4 @@
-// this protoc command _basically_ works, just outputs to the wrong directory
-// good ol' windows and double backslashes >_<
-// protoc --proto_path .\userpb .\userpb\user.proto "-IC:/Users/georg/.protoc" "-IC:/Users/georg/go/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.9.0/third_party/googleapis/google/api" --go_out=plugins=grpc:userpb "--plugin=protoc-gen-ts=$pwd/../web/node_modules/.bin/protoc-gen-ts.cmd" --js_out="import_style=commonjs,binary:../web/src/api" --ts_out=service=grpc-web:../web/src/api
-// grpcwebproxy --backend_addr=localhost:9090 --allow_all_origins --run_tls_server=false
-// --> https://medium.com/blokur/how-to-implement-a-grpc-client-and-server-in-typescript-fa3ac807855e
-
-////////// TOREALYDO: makefile
+////////// TOREALYDO: makefile (blah - i just wrote some ps1 files to deal with windows.......)
 
 // TODO: grpc gateway
 
