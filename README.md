@@ -25,15 +25,30 @@ Download or build from source, put these in a folder and add to PATH variable.
 - Docker for desktop
 
 ## how to run
+1. container traffic description:
+    - goskel: go app serving grpc on :9090
+    - goskel-web: react webapp serving on :3000
+    - grpcwebproxy: proxy taking http requests from goskel-web on :8080, and proxying them to goskel on :9090
 1. pre-reqs
-    - clone the repo
-    - install all deps mentioned above
+    - clone the repo (generated clients committed to source)
+    - docker: works out of the box
+    - running locally:
+        - install all deps mentioned above and added to PATH
+        - install nodejs and yarn
 1. docker
-    - `docker-compose up`
-1. locally
+    - build everying and run via docker-compose (~2-4 minutes) from root directory:
+        - `docker-compose up --build`
+    - build individually and run afterwards
+        - goskel: `docker build -t goskel:latest .`
+        - goskel-web: `pushd web; docker build -t goskel-web:latest .; popd`
+        - run all: `docker-compose up`
+1. locally (WINDOWS)
     - `pushd proto; ./gen-proto.ps1; popd`
     - `./start-grpc.ps1`
     - new tab/terminal: `cd web; yarn start`
+1. clean up (regain 7-8GB)
+    - `docker container prune`
+    - `docker image prune -a`
 
 
 ## progress
@@ -47,11 +62,12 @@ Download or build from source, put these in a folder and add to PATH variable.
 - dockerfile + docker-compose with grpcwebproxy + goskel
 
 #### IN PROGRESS
-- add running instructions
+- add protoc release links above
 - add dependencies: hydra, pg
-- implement server-side logic for user-service
+- implement server-side logic for user-service (with db + go-pg)
 - add makefile and automate stuffz
-- revisit protoc generation, make-ify, restructure?
+- implement front-end session management and routes
+- implement hydra login/consent/logout routes
 
 ## design
 - front-end: typescript + react

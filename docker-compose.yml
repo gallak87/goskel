@@ -12,7 +12,7 @@ services:
     image: goskel-web:latest
     build:
       context: ./web/
-      dockerfile: ./web/Dockerfile
+      dockerfile: ./Dockerfile
     ports:
       - "3000:3000"
     tty: true
@@ -22,6 +22,9 @@ services:
     networks:
       - backend
     image: goskel:latest
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
 
   grpcwebproxy:
     networks:
@@ -29,8 +32,8 @@ services:
       - backend
     image: grpc-web:grpcwebproxy
     build:
-      context: ./
-      dockerfile: ./dockerdeps/grpcwebproxy/Dockerfile
+      context: ./dockerdeps/grpcwebproxy
+      dockerfile: ./Dockerfile
     ports:
       - "8080:8080"
     links:
