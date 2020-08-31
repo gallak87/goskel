@@ -58,6 +58,7 @@ const initialState:State = {
   isError: false,
 };
 
+// TODO: 'type' should be an enum
 type Action = { type: 'setUsername', payload: string }
   | { type: 'setPassword', payload: string }
   | { type: 'setIsButtonDisabled', payload: boolean }
@@ -99,15 +100,13 @@ const Login = () => {
     const req = new GetUserRequest();
     req.setId("1");
     let name:string|undefined = 'unknown name';
-    client.getUser(req,
-      (error: ServiceError | null, response: GetUserResponse | null) => {
+    client.getUser(req, (error, response) => {
         console.log(error);
         console.log(response);
         name = response?.getName();
         console.log(name);
         dispatch({ type: 'loginSuccess', payload: `returned ${name} from user-service` });
-      }
-    );
+      });
 
     // // TODO: handle logins + session management
     // if (state.username === 'abc@email.com' && state.password === 'password') {

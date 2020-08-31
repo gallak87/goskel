@@ -14,6 +14,28 @@ web/    --> react webapp
         components/ --> web components (ex: login component)
 ```
 
+### deps (TODO: links)
+Download or build from source, put these in a folder and add to PATH variable.
+- protoc-gen-go.exe
+- protoc-gen-grpc-gateway.exe
+- protoc-gen-swagger.exe
+- protoc-gen-grpc-web.exe
+- protoc.exe
+- grpcwebproxy.exe
+- Docker for desktop
+
+## how to run
+1. pre-reqs
+    - clone the repo
+    - install all deps mentioned above
+1. docker
+    - `docker-compose up`
+1. locally
+    - `pushd proto; ./gen-proto.ps1; popd`
+    - `./start-grpc.ps1`
+    - new tab/terminal: `cd web; yarn start`
+
+
 ## progress
 #### WORKING
 - protoc generating typescript and go clients
@@ -25,6 +47,7 @@ web/    --> react webapp
 - dockerfile + docker-compose with grpcwebproxy + goskel
 
 #### IN PROGRESS
+- add running instructions
 - add dependencies: hydra, pg
 - implement server-side logic for user-service
 - add makefile and automate stuffz

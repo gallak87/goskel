@@ -3,10 +3,10 @@ package server
 import (
 	"context"
 	"errors"
+	"github.com/gallak87/goskel/proto/userpb"
 	"github.com/golang/glog"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
-	"github.com/gallak87/goskel/proto/userpb"
 	"net"
 	"net/http"
 )
@@ -16,7 +16,6 @@ var (
 )
 
 // TODO: replace with db and use go-pg
-
 type User struct {
 	ID   int64
 	Name string
