@@ -3,8 +3,6 @@
 FROM golang:1.15-alpine AS builder
 LABEL maintainer="George Allakhverdyan <george.a@outlook.com>"
 
-# TODO: build in container itself? copying from local for now
-#COPY server ./
 WORKDIR /go/src/github.com/gallak87/goskel
 COPY . .
 RUN go mod download
