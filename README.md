@@ -14,15 +14,10 @@ web/    --> react webapp
         components/ --> web components (ex: login component)
 ```
 
-### deps (TODO: links)
-Download or build from source, put these in a folder and add to PATH variable.
-- protoc-gen-go.exe
-- protoc-gen-grpc-gateway.exe
-- protoc-gen-swagger.exe
-- protoc-gen-grpc-web.exe
-- protoc.exe
-- grpcwebproxy.exe
-- Docker for desktop
+## tl;dr how to run
+1. docker
+    - build everying and run via docker-compose (~2-4 minutes) from root directory:
+    - `docker-compose up --build`
 
 ## how to run
 1. container traffic description:
@@ -31,7 +26,7 @@ Download or build from source, put these in a folder and add to PATH variable.
     - grpcwebproxy: proxy taking http requests from goskel-web on :8080, and proxying them to goskel on :9090
 1. pre-reqs
     - clone the repo (generated clients committed to source)
-    - docker: works out of the box
+    - docker for desktop: works out of the box
     - running locally:
         - install all deps mentioned above and added to PATH
         - install nodejs and yarn
@@ -43,9 +38,17 @@ Download or build from source, put these in a folder and add to PATH variable.
         - goskel-web: `pushd web; docker build -t goskel-web:latest .; popd`
         - run all: `docker-compose up`
 1. locally (WINDOWS)
-    - `pushd proto; ./gen-proto.ps1; popd`
-    - `./start-grpc.ps1`
-    - new tab/terminal: `cd web; yarn start`
+    1. Download or build from source, put these in a folder and add to PATH variable. (TODO: links)
+        - protoc-gen-go.exe
+        - protoc-gen-grpc-gateway.exe
+        - protoc-gen-swagger.exe
+        - protoc-gen-grpc-web.exe
+        - protoc.exe
+        - grpcwebproxy.exe
+    1. run:
+        - `pushd proto; ./gen-proto.ps1; popd`
+        - `./start-grpc.ps1`
+        - in new tab/terminal: `cd web; yarn start`
 1. clean up (regain 7-8GB)
     - `docker container prune`
     - `docker image prune -a`
