@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"google.golang.org/grpc"
 	"github.com/gallak87/goskel/proto/userpb"
+	"google.golang.org/grpc"
 	"log"
 	"time"
 )

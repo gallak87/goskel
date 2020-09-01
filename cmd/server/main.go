@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/golang/glog"
 	"github.com/gallak87/goskel/pkg/server"
+	"github.com/golang/glog"
 )
 
 var (
