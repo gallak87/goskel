@@ -1,6 +1,8 @@
 # goskel
 skeleton full-stack app with typescript/react + go, oauth, pg and protobuf
 
+<b> NOTE: Heavy refactoring to bring this app up to date, stuff may not work right </b>
+
 ## structure
 ```
 cmd/    --> go entry points (client, server)
