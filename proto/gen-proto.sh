@@ -21,20 +21,5 @@ protoc \
   --plugin=protoc-gen-grpc-web=/usr/local/bin/protoc-gen-grpc-web \
   --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:$api \
   ./userpb/*.proto
-#   --plugin=protoc-gen-ts=$web/node_modules/.bin/protoc-gen-ts \
-#   --ts_opt=unary_rpc_promise=true \
-#   --ts_opt=json_names \
-#   --ts_opt=explicit_override \
-#   --ts_out=service=grpc-web:$api \
-#  ./userpb/*.proto
 
-## FOR TS-PROTO ONLY
-#   --plugin=protoc-gen-ts_proto=$web/node_modules/.bin/protoc-gen-ts_proto \
-#   --ts_proto_out=. \
-#   --ts_proto_opt=esModuleInterop=true \
-#   --ts_proto_opt=returnObservable=false \
-#   ./userpb/*.proto
-## TODO: bug in path, --ts_proto_out=$api results in gallak87/goskel/proto/../web/src/api/: No such file or directory
-## -> just copy the output 
-# mv *.[t,j]s $api/
-## TOOD:    --ts_proto_opt=exportCommonSymbols=false,unknownFields=true,usePrototypeForDefaults=true \
+## TODO: Look into PBTS https://github.com/protobufjs/protobuf.js/tree/master/cli/bin
