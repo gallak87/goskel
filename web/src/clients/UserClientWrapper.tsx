@@ -7,9 +7,8 @@ import { GetUserRequest, GetUserResponse } from "../api/user_pb";
 const client = new UserServicePromiseClient("http://localhost:8080");
 
 // Wrapper class around grpc request/response objects
-const UserClientWrapper = () => {
-  TODO:
-  const getUser = async (id: string): Promise<GetUserResponse> =>  {
+export default class UserClient {
+  public async getUser(id: string): Promise<GetUserResponse> {
     const req = new GetUserRequest();
     req.setId(id);
     try {

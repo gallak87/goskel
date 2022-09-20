@@ -7,13 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
-
-import { UserServiceClient, ServiceError } from '../api/user_pb_service';
-import { GetUserRequest, GetUserResponse } from '../api/user_pb'
+import UserClient from '../clients/UserClientWrapper';
 
 // connects to grpcwebproxy which is listening on port 8080
 // TODO: configurize eventually..
-const client = new UserServiceClient("http://localhost:8080");
+const user = new UserClient();
 
 // Reference: https://github.com/creativesuraj/react-material-ui-login/blob/master/src/components/Login.tsx
 
@@ -50,7 +48,7 @@ type State = {
   isError: boolean
 };
 
-const initialState:State = {
+const initialState: State = {
   username: '',
   password: '',
   isButtonDisabled: true,
@@ -68,17 +66,17 @@ type Action = { type: 'setUsername', payload: string }
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'setUsername': 
+    case 'setUsername':
       return { ...state, username: action.payload };
-    case 'setPassword': 
+    case 'setPassword':
       return { ...state, password: action.payload };
-    case 'setIsButtonDisabled': 
+    case 'setIsButtonDisabled':
       return { ...state, isButtonDisabled: action.payload };
-    case 'loginSuccess': 
+    case 'loginSuccess':
       return { ...state, helperText: action.payload, isError: false };
-    case 'loginFailed': 
+    case 'loginFailed':
       return { ...state, helperText: action.payload, isError: true };
-    case 'setIsError': 
+    case 'setIsError':
       return { ...state, isError: action.payload };
   }
 }
@@ -91,22 +89,13 @@ const Login = () => {
   useEffect(() => {
     if (state.username.trim() && state.password.trim()) {
       dispatch({ type: 'setIsButtonDisabled', payload: false });
-     } else {
-       dispatch({ type: 'setIsButtonDisabled', payload: true });
-     }
+    } else {
+      dispatch({ type: 'setIsButtonDisabled', payload: true });
+    }
   }, [state.username, state.password]);
-  const handleLogin = () => {
-    // TODO: break out client wrapper
-    const req = new GetUserRequest();
-    req.setId("1");
-    let name:string|undefined = 'unknown name';
-    client.getUser(req, (error, response) => {
-        console.log(error);
-        console.log(response);
-        name = response?.getName();
-        console.log(name);
-        dispatch({ type: 'loginSuccess', payload: `returned ${name} from user-service` });
-      });
+  const handleLogin = async () => {
+    const response = await user.getUser("1");
+    dispatch({ type: 'loginSuccess', payload: `returned ${response.getName()} from user-service` })
 
     // // TODO: handle logins + session management
     // if (state.username === 'abc@email.com' && state.password === 'password') {
