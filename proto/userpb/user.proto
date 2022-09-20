@@ -1,14 +1,11 @@
-////////// TOREALYDO: makefile (blah - i just wrote some ps1 files to deal with windows.......)
-
-
-// TODO: grpc gateway
 syntax = "proto3";
-
+// TOOD: make file
+// TODO: grpc gateway
 //TODO: https://github.com/grpc-ecosystem/grpc-gateway/blob/master/examples/internal/proto/examplepb/a_bit_of_everything.proto
 //import "google/api/annotations.proto";
 
 package server;
-option go_package = "userpb";
+option go_package = "github.com/gallak87/goskel/proto/userpb";
 
 service UserService {
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
