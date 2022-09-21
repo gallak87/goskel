@@ -1,9 +1,8 @@
 # goskel
 skeleton full-stack app with typescript/react + go, oauth, pg and protobuf
 
-# ================
-# NOTE: Currently under heavy refactoring to bring this app up to date, stuff may not work right </b>
-# ================
+# Under Construction
+Sep 20 2022: Currently the webapp shows a login component but has no functionality, it only prints a grpc response as a verification for web->proxy->grpc-server integration.
 
 ## structure
 ```
