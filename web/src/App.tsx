@@ -13,6 +13,7 @@ function App() {
         </p>
       </header>
       <main>
+        <h3>SIMPLE TEST: use any user/pw and see grpc response response below</h3>
         <Login />
       </main>
     </div>

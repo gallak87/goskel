@@ -1,10 +1,10 @@
 # Copied from: https://mherman.org/blog/dockerizing-a-react-app/
-FROM node:12.18.3-alpine
+FROM node:16.17.0-alpine
 LABEL maintainer="George Allakhverdyan <george.a@outlook.com>"
 
 WORKDIR /app
 
-ENV PATH /app/node_modules.bin:$PATH
+ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json yarn.lock ./
 # TODO: parameterize react-script version
 RUN yarn install --silent
