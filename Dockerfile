@@ -1,5 +1,3 @@
-# Mix of https://stackoverflow.com/a/52990151 and https://tutorialedge.net/golang/go-docker-tutorial/
-# TODO: Make end image smaller? currently has all source
 FROM golang:1.19 AS builder
 LABEL maintainer="George Allakhverdyan <george.a@outlook.com>"
 

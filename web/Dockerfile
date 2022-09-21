@@ -1,4 +1,3 @@
-# Copied from: https://mherman.org/blog/dockerizing-a-react-app/
 FROM node:16.17.0-alpine
 LABEL maintainer="George Allakhverdyan <george.a@outlook.com>"
 # TODO: parameterize react-script version
