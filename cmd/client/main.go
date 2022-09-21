@@ -2,20 +2,23 @@ package main
 
 import (
 	"context"
-	"github.com/gallak87/goskel/proto/userpb"
-	"google.golang.org/grpc"
 	"log"
 	"time"
+
+	"github.com/gallak87/goskel/proto/userpb"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 func main() {
 	// Set up a connection to the server.
-	conn, err := grpc.Dial("localhost:9090", grpc.WithInsecure(), grpc.WithBlock())
+	creds := grpc.WithTransportCredentials(insecure.NewCredentials())
+	conn, err := grpc.Dial("localhost:9090", creds, grpc.WithBlock())
 	if err != nil {
-		log.Fatalf("did not connect: %v", err)
+		log.Fatalf("did not connect: %v\n", err)
 	}
 	defer conn.Close()
-	c := userpb.NewUserServiceClient(conn)
+	c := userpb.NewUserClient(conn)
 
 	// Contact the server and print out its response.
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
@@ -26,5 +29,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
-	log.Printf("Greeting: %s", r.Name)
+	log.Printf("UserClient: server response:\n\t%s\n\n", r.Name)
 }

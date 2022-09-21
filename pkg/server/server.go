@@ -3,12 +3,14 @@ package server
 import (
 	"context"
 	"errors"
-	"github.com/gallak87/goskel/proto/userpb"
+	"fmt"
+	"net"
+	"net/http"
+
+	userpb "github.com/gallak87/goskel/proto/userpb"
 	"github.com/golang/glog"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
-	"net"
-	"net/http"
 )
 
 var (
@@ -21,12 +23,17 @@ type User struct {
 	Name string
 }
 type UserTable map[string]User
+
 var UserRepo UserTable = make(UserTable)
-type userServer struct{}
+
+type userServer struct {
+	userpb.UnimplementedUserServer
+}
 
 func (s *userServer) GetUser(ctx context.Context, request *userpb.GetUserRequest) (*userpb.GetUserResponse, error) {
+	fmt.Printf("GetUser: %+v\n", request)
 	return &userpb.GetUserResponse{
-		Id: "1",
+		Id:   "1",
 		Name: "Username",
 	}, nil
 }
@@ -43,7 +50,7 @@ func (s *userServer) DeleteUser(ctx context.Context, request *userpb.DeleteUserR
 	}, nil
 }
 
-func newUserServer() userpb.UserServiceServer {
+func newUserServer() userpb.UserServer {
 	return new(userServer)
 }
 
@@ -61,7 +68,7 @@ func Run(ctx context.Context, network, address string) error {
 	}()
 
 	s := grpc.NewServer()
-	userpb.RegisterUserServiceServer(s, newUserServer())
+	userpb.RegisterUserServer(s, newUserServer())
 
 	go func() {
 		defer s.GracefulStop()
@@ -69,8 +76,6 @@ func Run(ctx context.Context, network, address string) error {
 	}()
 	return s.Serve(l)
 }
-
-
 
 // RunInProcessGateway starts the invoke in process http gateway.
 // TODO: Implement grpc gateway

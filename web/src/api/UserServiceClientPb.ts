@@ -16,7 +16,7 @@ import * as grpcWeb from 'grpc-web';
 import * as user_pb from './user_pb';
 
 
-export class UserServiceClient {
+export class UserClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -36,7 +36,7 @@ export class UserServiceClient {
   }
 
   methodDescriptorGetUser = new grpcWeb.MethodDescriptor(
-    '/server.UserService/GetUser',
+    '/server.User/GetUser',
     grpcWeb.MethodType.UNARY,
     user_pb.GetUserRequest,
     user_pb.GetUserResponse,
@@ -64,7 +64,7 @@ export class UserServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/server.UserService/GetUser',
+          '/server.User/GetUser',
         request,
         metadata || {},
         this.methodDescriptorGetUser,
@@ -72,14 +72,14 @@ export class UserServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/server.UserService/GetUser',
+      '/server.User/GetUser',
     request,
     metadata || {},
     this.methodDescriptorGetUser);
   }
 
   methodDescriptorRegisterUser = new grpcWeb.MethodDescriptor(
-    '/server.UserService/RegisterUser',
+    '/server.User/RegisterUser',
     grpcWeb.MethodType.UNARY,
     user_pb.RegisterUserRequest,
     user_pb.RegisterUserResponse,
@@ -107,7 +107,7 @@ export class UserServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/server.UserService/RegisterUser',
+          '/server.User/RegisterUser',
         request,
         metadata || {},
         this.methodDescriptorRegisterUser,
@@ -115,14 +115,14 @@ export class UserServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/server.UserService/RegisterUser',
+      '/server.User/RegisterUser',
     request,
     metadata || {},
     this.methodDescriptorRegisterUser);
   }
 
   methodDescriptorDeleteUser = new grpcWeb.MethodDescriptor(
-    '/server.UserService/DeleteUser',
+    '/server.User/DeleteUser',
     grpcWeb.MethodType.UNARY,
     user_pb.DeleteUserRequest,
     user_pb.DeleteUserResponse,
@@ -150,7 +150,7 @@ export class UserServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/server.UserService/DeleteUser',
+          '/server.User/DeleteUser',
         request,
         metadata || {},
         this.methodDescriptorDeleteUser,
@@ -158,7 +158,7 @@ export class UserServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/server.UserService/DeleteUser',
+      '/server.User/DeleteUser',
     request,
     metadata || {},
     this.methodDescriptorDeleteUser);

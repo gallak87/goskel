@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
+
 	"github.com/gallak87/goskel/pkg/server"
 	"github.com/golang/glog"
 )
@@ -15,10 +17,9 @@ var (
 func main() {
 	flag.Parse()
 	defer glog.Flush()
-
+	fmt.Printf("goskel: Starting server %s\n\n", *addr)
 	ctx := context.Background()
 	if err := server.Run(ctx, *network, *addr); err != nil {
 		glog.Fatal(err)
 	}
 }
-

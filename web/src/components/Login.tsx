@@ -7,11 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
-import UserClient from '../clients/UserClientWrapper';
+import UserService from '../services/user.service';
 
 // connects to grpcwebproxy which is listening on port 8080
 // TODO: configurize eventually..
-const user = new UserClient();
+const user = new UserService();
 
 // Reference: https://github.com/creativesuraj/react-material-ui-login/blob/master/src/components/Login.tsx
 

@@ -4,12 +4,16 @@ networks:
   frontend:
   backend:
 
+
 services:
   #### frontend
   goskel-web:
     networks:
       - frontend
     image: goskel-web:latest
+    depends_on:
+      - goskel
+      - grpcwebproxy
     build:
       context: ./web/
       dockerfile: ./Dockerfile
@@ -31,6 +35,8 @@ services:
       - frontend
       - backend
     image: grpc-web:grpcwebproxy
+    depends_on:
+      - goskel
     build:
       context: ./dockerdeps/grpcwebproxy
       dockerfile: ./Dockerfile

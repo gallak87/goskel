@@ -7,7 +7,7 @@ syntax = "proto3";
 package server;
 option go_package = "github.com/gallak87/goskel/proto/userpb";
 
-service UserService {
+service User {
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
   rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {}
   rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
