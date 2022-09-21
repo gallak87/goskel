@@ -1,21 +1,15 @@
 # Copied from: https://mherman.org/blog/dockerizing-a-react-app/
 FROM node:16.17.0-alpine
 LABEL maintainer="George Allakhverdyan <george.a@outlook.com>"
+# TODO: parameterize react-script version
 
-### NOTE: to support hot reloads, use a volume
-# issue right now is i can't get volumes: - ./web:/app to work in docker-compose!
-#VOLUME [ "/app" ]
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
-# TODO: parameterize react-script version
-COPY package.json yarn.lock ./
+# NOTE: The docker-compose file at the root adds a volume to the web folder
+# effectively allowing hot-reloads to work. Somehow the architecture doesn't matter?
+# Able to run both via docker and bare metal and hot reloads and the app just works /shrug
 RUN yarn install --silent
-
-RUN echo HELLO > test.txt
-
-# TODO: use yarn build instead for a production build, dev only atm
-
 EXPOSE 3000
 
 COPY . ./
