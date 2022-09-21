@@ -95,7 +95,7 @@ const Login = () => {
   }, [state.username, state.password]);
   const handleLogin = async () => {
     const response = await user.getUser("1");
-    dispatch({ type: 'loginSuccess', payload: `returned ${response.getName()} from user-service` })
+    dispatch({ type: 'loginSuccess', payload: `returned '${response.toString()}' from user-service` })
 
     // // TODO: handle logins + session management
     // if (state.username === 'abc@email.com' && state.password === 'password') {
