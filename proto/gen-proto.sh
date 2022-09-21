@@ -4,10 +4,15 @@
 web=$(pwd)/../web
 api=$web/src/api
 
+# Server-side TS generation
+#pbjs=$web/node_modules/.bin/pbjs
+#pbts=$web/node_modules/.bin/pbts
+#flags="--no-create --no-encode --no-decode --no-verify --no-convert --no-delimited --no-beautify"
+
 # Clean previously generated files
 rm -rf $api/*
 
-# Generate new clients
+# Generate server
 # TODO: dynamic per pb eventually, hard coding userpb for now
 protoc \
   -I./userpb \
@@ -19,7 +24,11 @@ protoc \
   --go-grpc_opt=paths=source_relative \
   --js_out=import_style=commonjs:$api \
   --plugin=protoc-gen-grpc-web=/usr/local/bin/protoc-gen-grpc-web \
-  --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:$api \
+  --grpc-web_out=import_style=typescript,mode=grpcweb:$api \
   ./userpb/*.proto
 
-## TODO: Look into PBTS https://github.com/protobufjs/protobuf.js/tree/master/cli/bin
+# Server-side TS generation
+# $pbjs -p . $flags --no-comments -t static-module ./userpb/user.proto -o $api/user.service.js
+# $pbjs -p . $flags -t static-module ./userpb/user.proto | \
+#   $pbts --no-comments -o $api/user.service.d.ts - 
+
