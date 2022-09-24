@@ -1,16 +1,36 @@
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .App {
   text-align: center;
+}
+
+.App nav ul li {
+  display: inline;
+  margin: 2px;
+  padding: 4px;
+}
+
+.App nav ul li a:hover {
+  text-decoration: none;
 }
 
 .App-logo {
   height: 10vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -25,14 +45,11 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #61ddff;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-link:hover {
+  color: #abedff;
+  text-decoration: none;
 }

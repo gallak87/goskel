@@ -6,8 +6,6 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import TextField from '@material-ui/core/TextField';
-import { Outlet } from 'react-router-dom';
 import UserService from '../services/user.service';
 
 // connects to grpcwebproxy which is listening on port 8080
@@ -86,7 +84,7 @@ const reducer = (state: State, action: Action): State => {
 }
 
 // Login component
-export default function Login() {
+const Register = () => {
   const classes = useStyles();
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -126,11 +124,11 @@ export default function Login() {
     }
   return (
     <form className={classes.container} noValidate autoComplete="off">
-      <h3>SIMPLE TEST: use any user/pw and see grpc response below</h3>
+      <h1> REGISTER </h1>
       <Card className={classes.card}>
         <CardHeader className={classes.header} title="Login" />
         <CardContent>
-          <div>
+          {/* <div>
             <TextField
               error={state.isError}
               fullWidth
@@ -154,7 +152,7 @@ export default function Login() {
               onChange={handlePasswordChange}
               onKeyPress={handleKeyPress}
             />
-          </div>
+          </div> */}
         </CardContent>
         <CardActions>
           <Button
@@ -168,8 +166,8 @@ export default function Login() {
           </Button>
         </CardActions>
       </Card>
-      <Outlet />
     </form>
   );
 }
 
+export default Register;
