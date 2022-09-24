@@ -9,13 +9,18 @@
     "eject": "node_modules/.bin/react-scripts eject"
   },
   "devDependencies": {
-    "@types/google-protobuf": "^3.15.6"
-  },
-  "dependencies": {
-    "@material-ui/core": "^4.12.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/google-protobuf": "^3.15.6",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@types/jest": "^29.0.3",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.20",
@@ -25,14 +30,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.8.3"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "react-scripts": "5.0.1"
   },
   "browserslist": {
     "production": [

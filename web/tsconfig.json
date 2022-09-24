@@ -9,7 +9,6 @@
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
@@ -17,7 +16,23 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "noUnusedLocals": false,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@api/*": [
+        "src/api/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@app/*": [
+        "src/*"
+      ],
+    }
   },
   "include": [
     "src"

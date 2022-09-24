@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * @fileoverview gRPC-Web generated client stub for server
  * @enhanceable
@@ -165,4 +166,3 @@ export class UserClient {
   }
 
 }
-

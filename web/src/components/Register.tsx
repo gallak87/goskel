@@ -1,4 +1,3 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React, { useEffect, useReducer } from 'react';
 
 import Button from '@material-ui/core/Button';
@@ -6,7 +5,9 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import UserService from '../services/user.service';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
+import UserService from '@services/user.service';
 
 // connects to grpcwebproxy which is listening on port 8080
 // TODO: configurize eventually..
@@ -15,32 +16,30 @@ const user = new UserService();
 // Reference: https://github.com/creativesuraj/react-material-ui-login/blob/master/src/components/Login.tsx
 
 // TODO: Learn more about colors and material-ui: https://material-ui.com/customization/color/
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      width: 400,
-      margin: `${theme.spacing(0)} auto`
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: 400,
+    margin: `${theme.spacing(0)} auto`,
+  },
+  loginBtn: {
+    marginTop: theme.spacing(2),
+    flexGrow: 1,
+    background: '#339933',
+    '&:hover': {
+      backgroundColor: '#43a943',
     },
-    loginBtn: {
-      marginTop: theme.spacing(2),
-      flexGrow: 1,
-      background: '#339933',
-      '&:hover': {
-        backgroundColor: '#43a943',
-      },
-    },
-    header: {
-      textAlign: 'center',
-      background: '#282c34',
-      color: '#fff'
-    },
-    card: {
-      marginTop: theme.spacing(10)
-    }
-  })
-);
+  },
+  header: {
+    textAlign: 'center',
+    background: '#282c34',
+    color: '#fff',
+  },
+  card: {
+    marginTop: theme.spacing(10),
+  },
+}));
 
 type State = {
   username: string
@@ -81,7 +80,7 @@ const reducer = (state: State, action: Action): State => {
     case 'setIsError':
       return { ...state, isError: action.payload };
   }
-}
+};
 
 // Login component
 const Register = () => {
@@ -96,8 +95,8 @@ const Register = () => {
     }
   }, [state.username, state.password]);
   const handleLogin = async () => {
-    const response = await user.getUser("1");
-    dispatch({ type: 'loginSuccess', payload: `returned '${response.toString()}' from user-service` })
+    const response = await user.getUser({ id: '1' });
+    dispatch({ type: 'loginSuccess', payload: `returned '${response.toString()}' from user-service` });
 
     // // TODO: handle logins + session management
     // if (state.username === 'abc@email.com' && state.password === 'password') {
@@ -113,15 +112,13 @@ const Register = () => {
     }
   };
 
-  const handleUsernameChange: React.ChangeEventHandler<HTMLInputElement> =
-    (event) => {
-      dispatch({ type: 'setUsername', payload: event.target.value });
-    };
+  const handleUsernameChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    dispatch({ type: 'setUsername', payload: event.target.value });
+  };
 
-  const handlePasswordChange: React.ChangeEventHandler<HTMLInputElement> =
-    (event) => {
-      dispatch({ type: 'setPassword', payload: event.target.value });
-    }
+  const handlePasswordChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    dispatch({ type: 'setPassword', payload: event.target.value });
+  };
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <h1> REGISTER </h1>
@@ -168,6 +165,6 @@ const Register = () => {
       </Card>
     </form>
   );
-}
+};
 
 export default Register;

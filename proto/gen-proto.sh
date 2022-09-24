@@ -31,4 +31,6 @@ protoc \
 # $pbjs -p . $flags --no-comments -t static-module ./userpb/user.proto -o $api/user.service.js
 # $pbjs -p . $flags -t static-module ./userpb/user.proto | \
 #   $pbts --no-comments -o $api/user.service.d.ts - 
-
+for f in $api/*.[tj]s; do
+    printf '%s\n%s' '/* eslint-disable */' "$(cat $f)" > $f
+done

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as jspb from 'google-protobuf'
 
 
@@ -117,4 +118,3 @@ export namespace DeleteUserResponse {
     success: boolean,
   }
 }
-

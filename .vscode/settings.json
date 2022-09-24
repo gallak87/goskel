@@ -1,0 +1,37 @@
+{
+  "eslint.workingDirectories": [
+    {
+      "directory": "web/"
+    }
+  ],
+  "files.autoSave": "afterDelay",
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.run": "onSave",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll": true,
+  },
+  "eslint.debug": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": false
+  },
+  "editor.detectIndentation": false,
+  "[typescript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
+  "[typescriptreact]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
+  "[json]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
+  "[jsonc]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
+}
