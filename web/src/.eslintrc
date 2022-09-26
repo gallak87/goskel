@@ -1,51 +1,54 @@
 {
-    "extends": [
-        "eslint:recommended",
-        "react-app",
-        "react-app/jest",
-        "airbnb-base",
-        "plugin:import/typescript",
-        "plugin:@typescript-eslint/recommended"
-    ],
-    "plugins": [
-        "@typescript-eslint",
-        "simple-import-sort"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "settings": {
-        "import/resolver": {
-            "typescript": {}
-        }
-    },
-    "rules": {
-        "simple-import-sort/exports": "error",
-        "simple-import-sort/imports": [
-            "error",
-            {
-                "groups": [
-                    [
-                        "^react"
-                    ],
-                    [
-                        "^\\u0000"
-                    ],
-                    [
-                        "^@?\\w"
-                    ],
-                    [
-                        "^@app?\\w",
-                        "^@api?\\w",
-                        "^@components?\\w",
-                        "^@services?\\w"
-                    ],
-                    [
-                        "^\\."
-                    ]
-                ]
-            }
-        ],
-        "import/first": "error",
-        "import/newline-after-import": "error",
-        "import/no-duplicates": "error"
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "react-app/jest",
+    "airbnb-base",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "simple-import-sort"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
     }
+  },
+  "rules": {
+    "array-element-newline": [
+      "error":
+    ]
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            "^react"
+          ],
+          [
+            "^\\u0000"
+          ],
+          [
+            "^@?\\w"
+          ],
+          [
+            "^@app?\\w",
+            "^@api?\\w",
+            "^@components?\\w",
+            "^@services?\\w"
+          ],
+          [
+            "^\\."
+          ]
+        ]
+      }
+    ]
+  }
 }
